@@ -1,0 +1,20 @@
+---
+name: JSON-Code in Asciidoc
+kurzbeschreibung: |
+  labore et dolore
+beschreibung: |
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed <<Ast,Ast>> nonumy eirmod tempor invidunt ut labore et dolore
+  magna aliquyam erat, sed diam voluptua. At <<Bast,Bast>> eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+
+  .Beispiel-Json
+  [source,json]
+  ----
+  {
+    "key1": "value1",
+    "list": [
+      "entry1",
+      "entry2
+    ]
+  }
+  ----
+status: umgesetzt
