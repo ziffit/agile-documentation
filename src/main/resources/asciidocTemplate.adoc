@@ -1,0 +1,66 @@
+:source-highlighter: coderay
+:revdate: {docdate}
+:revnumber: <%=version%>
+:version-label!:
+
+:toc: macro
+:toc-title: Inhalt
+:toclevels: 3
+:numbered:
+
+= Dokumentation: <%=projectName%>
+
+<%= projectInfo%>
+
+toc::[]
+
+== Fachfunktionen (FF)
+
+<%=overallCoverage %>% der Akzeptanzkriterien sind per Test abgedeckt.
+
+[grid="rows"]
+[options="header",cols="4s,8"]
+|====
+| Tag | Fachfunktion
+<% tags.sort().each { %>
+|<%= it.key %>|<% it.value.sort().each { println('<<'+it+'>> +') } %>
+<% } %>
+|====
+
+<% fachfunktionen.sort().each { %>
+[#<%=it.key%>]
+=== <%=it.key%> <%=it.value.name%>
+****
+*Kurzbeschreibung:* <%=it.value.kurzbeschreibung%>
+
+<%= it.value.beschreibung %>
+
+*Akzeptanzkriterien:*
+
+Coverage: <%=akCoverage.get(it.key)%> %
+
+<% aks.get(it.key).each { ak->
+    def key = it.key+"#"+ak.key
+%>
+====
+*<%= it.key %>#<%= ak.key %>*: _<%= ak.value %>_
+
+<% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  '${test.key}'# + \n")}} : println("keine") %>
+====
+<%
+}
+%>
+
+
+<% if(diagramme.containsKey(it.key)) { %>
+*Diagramm:*
+<%= diagramme.get(it.key) %>
+<% } %>
+****
+
+<% } %>
+
+== Glossar
+
+<%= glossary %>
+

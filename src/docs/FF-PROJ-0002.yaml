@@ -1,0 +1,11 @@
+---
+name: JSON-Code in Asciidoc
+kurzbeschreibung: |
+  labore et dolore
+akzeptanzkriterien:
+  - 01: "Es ist wunderschön"
+  - 02: "Es sollte auch funktionieren."
+  - 03: "Testbares AK, mit deutlich längerer Formulierung als die anderen Kriterien."
+tags:
+  - Aufgaben
+  - Neuanlage

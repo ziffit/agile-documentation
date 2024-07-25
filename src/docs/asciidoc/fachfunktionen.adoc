@@ -18,10 +18,6 @@ Beispiel für eine agile Documentation.
 
 include::{generated-adoc-dir}/fachfunktionen-generated.adoc[]
 
-== Übergreifende Funktionen (UF)
-
-include::{generated-adoc-dir}/uebergreifende-fachfunktionen-generated.adoc[]
-
 == Glossar
 
 [.lead]

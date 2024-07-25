@@ -1,0 +1,15 @@
+---
+name: Tabelle in Asciidoc
+kurzbeschreibung: |
+  orem ipsum dolor sit amet, consetetur sadipscing elitr
+akzeptanzkriterien:
+  - 01: "Dieser Punkt ist wichtig und Testbar"
+  - 02: "Dieser ist es auch"
+  - 03: "Dieser ist es auch im besonderen"
+  - 04: "AK OHNE Test"
+  - 05: "AK nochmals Ohne Test"
+  - 06: "AK 6 nochmals Ohne Test"
+  - 07: "AK 7 nochmals mit NEUEN Test"
+tags:
+  - Neuanlage
+  - Beispieltag
