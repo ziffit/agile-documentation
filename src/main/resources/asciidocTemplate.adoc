@@ -16,7 +16,7 @@ toc::[]
 
 == Fachfunktionen (FF)
 
-<%=overallCoverage %>% der Akzeptanzkriterien sind per Test abgedeckt.
+*Anforderungsabdeckung: <%=overallCoverage %>%* der Akzeptanzkriterien sind durch Tests abgedeckt.
 
 [grid="rows"]
 [options="header",cols="4s,8"]

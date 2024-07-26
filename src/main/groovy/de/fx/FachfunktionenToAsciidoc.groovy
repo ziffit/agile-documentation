@@ -11,18 +11,11 @@ import java.nio.file.StandardOpenOption
 
 class FachfunktionenToAsciidoc {
 
-    final String AGILE_DOCK_TARGET_FOLDER = "agile-doc"
-    final String TEST_RESULTS_TARGET_FOLDER = "test-results"
-
     final String NAME_OF_GENERATED_ASCIIDOC_FILE = "fachfunktionen-generated.adoc"
     final String NAME_OF_GLOSSARY_FILE = "glossary.adoc"
     final String GLOSSARY_DEFAULT_TEXT = "Zum Anlegen eines Glossars bitte die Datei `glossary.adoc` im `docDirectory` anlegen.\n\n"
     final String NAME_OF_PROJECT_INFO_FILE = "project-infos.adoc"
     final String PROJECT_INFO_DEFAULT_TEXT = "Zum Anlegen von Projektinformationen bitte die Datei `project-infos.adoc` im `docDirectory` anlegen.\n\n"
-
-    final String TEST_RESULTS = "testReport.json"
-
-    final String HTML_OUTPUT_FOLDER = "html-output"
 
     def properties = new Properties()
     String targetFolder
@@ -103,22 +96,23 @@ class FachfunktionenToAsciidoc {
         def fachfunktionen = [:]
         def tags = [:] as Map<String, List<String>>
         def aks = [:] as Map<String, Map<String, String>>
-        def akCoverage = [:] as Map<String, String>
+        def ffCoverage = [:] as Map<String, String>
         def diagramme = [:] as Map<String, String>
+        def overallCoverage = 0
         features.each {
-            def id = it.name.replace(".yaml", "")
+            def ffId = it.name.replace(".yaml", "")
             def yaml = new YamlSlurper().parseText(it.getText("UTF-8"))
-            def adoc = new File(fachfunktionenDir, id + ".adoc")
+            def adoc = new File(fachfunktionenDir, ffId + ".adoc")
             if (yaml["beschreibung"] == null && adoc.exists()) {
                 yaml["beschreibung"] = adoc.getText("UTF-8")
             }
-            fachfunktionen.put(id, yaml)
+            fachfunktionen.put(ffId, yaml)
             yaml["tags"].each { String tag ->
                 if (tags.containsKey(tag)) {
-                    tags[tag].add(id)
+                    tags[tag].add(ffId)
                     return
                 }
-                tags.put(tag, [id])
+                tags.put(tag, [ffId])
             }
 
             def aksfeature = [:] as Map<String, String>
@@ -126,12 +120,12 @@ class FachfunktionenToAsciidoc {
             yaml["akzeptanzkriterien"].each { Map<String, String> ak ->
                 aksfeature.put(ak.keySet()[0], ak[ak.keySet()[0]])
             }
-            aks.put(id, aksfeature)
+            aks.put(ffId, aksfeature)
 
 
             def countSuccess = 0
             aksfeature.keySet().each { String ak ->
-                String key = id + "#" + ak
+                String key = ffId + "#" + ak
                 if (akReport.containsKey(key)) {
                     if (akReport.get(key).findAll { it.value == "success" }.size() == akReport.get(key).size()) {
                         countSuccess++
@@ -139,17 +133,25 @@ class FachfunktionenToAsciidoc {
                 }
             }
             println("countSuccess: $countSuccess")
-            def coverage = aksfeature.keySet().size() > 0 ? String.format("%.2f", (countSuccess / aksfeature.keySet().size()) * 100) : "0.00"
-            akCoverage.put(id, coverage)
+            def percent = aksfeature.keySet().size() > 0 ? countSuccess / aksfeature.keySet().size() * 100 : 0
+            def coverage = String.format("%.2f", percent)
+            ffCoverage.put(ffId, coverage)
+            overallCoverage = overallCoverage + percent
+
+            //overall Coverage
+
 
             //Diagramm
-            def diagramm = new File(fachfunktionenDir, id + "-dia.adoc")
+            def diagramm = new File(fachfunktionenDir, ffId + "-dia.adoc")
             if (diagramm.isFile()) {
-                diagramme.put(id, diagramm.getText("UTF-8"))
+                diagramme.put(ffId, diagramm.getText("UTF-8"))
             }
 
         }
-        println akCoverage
+
+        overallCoverage = overallCoverage / ffCoverage.size()
+        println "ffCoverage: $ffCoverage"
+        println "overallCoverage: $overallCoverage"
         write(asciiDocOutputDirectory, [
                 version        : properties.version,
                 projectName    : properties.artifactId,
@@ -157,8 +159,8 @@ class FachfunktionenToAsciidoc {
                 tags           : tags,
                 aks            : aks,
                 akReport       : akReport,
-                akCoverage     : akCoverage,
-                overallCoverage: "to be done",
+                akCoverage     : ffCoverage,
+                overallCoverage: String.format("%.2f", overallCoverage),
                 diagramme      : diagramme,
                 glossary       : glossary,
                 projectInfo    : projectInfo,
