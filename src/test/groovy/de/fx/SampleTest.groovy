@@ -45,7 +45,7 @@ class SampleTest extends Specification {
         1 | 1 || 0
     }
 
-    def "Wird als Divisor 0 übergeben, wird eine IllegalArgumentException geworfen.[FF-PROJ-0001#05]"() {
+    def "Wird als Divisor 0 übergeben, wird eine IllegalArgumentException geworfen. [FF-PROJ-0001#05]"() {
         when:
         systemUnderTest.divide(10, 0)
 

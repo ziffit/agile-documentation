@@ -30,6 +30,14 @@ class FachfunktionenToAsciidoc {
     Map<String, Map<String, String>> akReport = [:]
     def templateEngine = new SimpleTemplateEngine()
 
+    /**
+     * Methode kann zum direkten Starten des Skripts genutzt werden, insbesondere zum Debuggen.
+     * @param args [0] targetFolder als Absoluter Pfad
+     */
+    static void main(String[] args) {
+        new FachfunktionenToAsciidoc(args[0]).create()
+    }
+
     FachfunktionenToAsciidoc(String targetFolder = "target") {
         this.targetFolder = targetFolder
         def path = Paths.get(targetFolder).toAbsolutePath().toString()

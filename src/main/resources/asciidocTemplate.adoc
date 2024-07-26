@@ -45,7 +45,7 @@ Coverage: <%=akCoverage.get(it.key)%> %
 ====
 *<%= it.key %>#<%= ak.key %>*: _<%= ak.value %>_
 
-<% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  '${test.key}'# + \n")}} : println("keine") %>
+<% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  '${test.key}'# + \n")}} : println("[yellow]#keine Tests gefunden#") %>
 ====
 <%
 }

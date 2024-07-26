@@ -1,11 +1,45 @@
-# Showcase für eine agile Dokumentation
+# Showcase für eine agile Dokumentation nach dem Prinzip FaCT (Fachfunktion, Code & Test)
 
-`mvn package` erzeugt im target eine html-Datei mit der generierten Dokumentation.
+## Ausführung
 
+`mvn package` erzeugt in `target/html-out` die html-Datei `fachfunktionen-generated.html` mit der generierten Dokumentation.
 
-# Was macht eine Fachfunktion aus
+## Prinzipielles
 
-## Inhalte
+Es handelt sich um eine beispielhafte Implementierung, die fachliche Dokumentation, Code und Test in Beziehung zu 
+bringt.
+
+Vorteile: 
+* Die Dokumentation ist Teil eines Pull-Requests und passt damit zum Code
+* Die Dokumentation ist archiviert
+* Die Verknüpfung von Fachfunktionen und Tests ermöglicht eine automatische Anforderungsabdeckung und damit auch 
+  Selbstkontrolle
+* Der Strukturierte Aufbau ermöglicht ein einfaches Pflegen, da keine Zeit für Formatierung aufgewendet werden muss
+* Die Dokumentation ist rein Text-basiert (eingeschlossen Plant-UML-Grafiken) und kann bei einem PR gut 
+  zusammengeführt werden
+* Das Vorgehen kann prinzipiell in jeder Programmiersprache genutzt werden und führt zu keinem Vendor-Lock-in. 
+* Der entstehende Report kann exportiert werden (z.B. Confluence oder PDF), um ihn allen Projektbeteiligten zur 
+  Verfügung zu stellen
+* Die YAMLs und Generierung kann angepasst werden, um weitere strukturierte Informationen zu einer Fachfunktion (FF) 
+  abzulegen. Z.B. könnten optional notwendige Berechtigungen angegeben werden.
+
+## Struktur
+
+`src/docs` enthält die Quellen für die Dokumentation. Zum Anlegen einer neuen Fachfunktion am besten die *.yaml und 
+*.adoc einer bestehen kopieren und den Zähler im Dateinamen anpassen. 
+
+`src/main/groovy/de.fx/FachfunktionenToAsciiiDoc.groovy` ist das Skript, dass die Fachfunktionen einliest und ein gemeinsames asciidoc nach `target/asciidoc-out` generiert, welches dann mit `asciidoctor` in html (siehe `pom.xml`) umgewandelt wird.
+
+`src/main/resources/asciidocTemplate.adoc` ist das Groovy-Template für die asciidoc-Generierung. Hier kann Einfluss auf das Aussehen des Reports genommen werden.
+
+`src/test/groovy` enthält die Beispiel-Tests für die Fachfunktionen. Sie sind mit Spock geschrieben. Die Verknüpfung 
+eines AKs (Akzeptanzkriteriums) mit einem Test erfolgt durch die Einbindung der ID des AKs in den Testnamen. Dabei 
+können kommasepariert mehrere IDs angegeben werden. Das Benutzen der eckigen Klammern, um Aks vom Testnamen zu trennen, 
+ist optional, hat sich aber als gute Konvention etabliert, da es die Lesbarkeit verbessert.
+
+# Fachfunktionen
+
+## Was macht eine Fachfunktion (kurz: FF) aus
 
 Kurz: Eine Fachfunktion beschreibt, was eine Software leistet, aber nicht wie Sie bedient wird.
 
@@ -44,6 +78,8 @@ Was tut die SW? Welche fachlichen Zusammenhänge gibt es? Ist das aktuelle Verha
   hierbei um ... handelt)
 * Fachliche Beschreibung bei Aufruf von Schnittstellen mit dem Ziel, zu vermitteln, weshalb eine Schnittstelle 
   genutzt wird.
+* Tags zum Kategorisieren von FF. Der hierarchische Aufbau empfiehlt sicht nicht, da FF sich über die Zeit verändern 
+  können (deshalb auch IDs und keine sprechenden Schlüssel). Tags helfen deshalb beim schnelleren auffinden von FF. 
 * Optional: Beispieldaten
 * Optional: Code-Auszüge
 
