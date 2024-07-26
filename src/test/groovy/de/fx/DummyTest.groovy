@@ -3,7 +3,7 @@ package de.fx
 import spock.lang.Specification
 
 class DummyTest extends Specification {
-    def "Test Fachfunktion 1 AK 1 [FF-PROJ-0001#01]"() {
+    def "Test Fachfunktion 2 AK 3 [FF-PROJ-0002#03]"() {
         expect:
         true
     }

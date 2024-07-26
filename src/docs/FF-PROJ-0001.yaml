@@ -1,15 +1,10 @@
 ---
-name: Tabelle in Asciidoc
+name: Division
 kurzbeschreibung: |
-  orem ipsum dolor sit amet, consetetur sadipscing elitr
+  Dividieren von zwei Ganzzahlen
 akzeptanzkriterien:
-  - 01: "Dieser Punkt ist wichtig und Testbar"
-  - 02: "Dieser ist es auch"
-  - 03: "Dieser ist es auch im besonderen"
-  - 04: "AK OHNE Test"
-  - 05: "AK nochmals Ohne Test"
-  - 06: "AK 6 nochmals Ohne Test"
-  - 07: "AK 7 nochmals mit NEUEN Test"
+  - 01: "Zwei Integer können dividiert werden, das Ergebnis ist eine Gleitkommazahl."
+  - 02: "Null als Divisor ist nicht zulässig."
 tags:
   - Neuanlage
   - Beispieltag

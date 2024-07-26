@@ -23,10 +23,23 @@ Vorteile:
 * Die YAMLs und Generierung kann angepasst werden, um weitere strukturierte Informationen zu einer Fachfunktion (FF) 
   abzulegen. Z.B. könnten optional notwendige Berechtigungen angegeben werden.
 
+Fachfunktionen beziehen sich immer auf ein Artefakt. Besteht ein Projekt aus mehreren Artefakten, sollte für jedes 
+eine eigene Dokumentation geführt werden. Dies gilt auch für Projekte mit getrennten Front-/ Backend. 
+
+Gründe:
+* Testen über Artefaktgrenzen hinweg ist schwieriger und erhöht die Komplexität
+* Möglicherweise wird nur das Frontend neu entwickelt und das Backend bleibt unverändert. In diesem Fall wäre eine 
+  Dokumentation, die beide Beschreibungen zusammengefasst hat hinderlich.
+* Die Implementierung der Business-Logik sollte sich ausschließlich im Backend finden und Fachfunktionen 
+  konzentrieren sich mehr auf die Beschreibung von Fachlichkeit und nicht Bedienung von Oberflächen.
+* Wird FaCT für die Beschreibung von Frontends genutzt, unterscheidet sich das Testen und die Abstraktionebene der 
+  Beschreibung, weshalb ein Vermischen nicht vorteilhaft ist.
+
 ## Struktur
 
 `src/docs` enthält die Quellen für die Dokumentation. Zum Anlegen einer neuen Fachfunktion am besten die *.yaml und 
-*.adoc einer bestehen kopieren und den Zähler im Dateinamen anpassen. 
+*.adoc einer bestehen kopieren und den Zähler im Dateinamen anpassen. Zusätzlich kann ein *-dia.adoc angelegt werden,
+u, ein optionales Diagramm an die FF anzuhängen.
 
 `src/main/groovy/de.fx/FachfunktionenToAsciiiDoc.groovy` ist das Skript, dass die Fachfunktionen einliest und ein gemeinsames asciidoc nach `target/asciidoc-out` generiert, welches dann mit `asciidoctor` in html (siehe `pom.xml`) umgewandelt wird.
 
@@ -35,7 +48,9 @@ Vorteile:
 `src/test/groovy` enthält die Beispiel-Tests für die Fachfunktionen. Sie sind mit Spock geschrieben. Die Verknüpfung 
 eines AKs (Akzeptanzkriteriums) mit einem Test erfolgt durch die Einbindung der ID des AKs in den Testnamen. Dabei 
 können kommasepariert mehrere IDs angegeben werden. Das Benutzen der eckigen Klammern, um Aks vom Testnamen zu trennen, 
-ist optional, hat sich aber als gute Konvention etabliert, da es die Lesbarkeit verbessert.
+ist optional, hat sich aber als gute Konvention etabliert, da es die Lesbarkeit verbessert. 
+
+Ein AK gilt als getestet, wenn es mindestens einen erfolgreich ausgeführten Test gibt und keinen fehlgeschlagenen.
 
 # Fachfunktionen
 
@@ -105,3 +120,17 @@ Was tut die SW? Welche fachlichen Zusammenhänge gibt es? Ist das aktuelle Verha
  
 Durch das NICHT-Beschreiben der Oberfläche, wird die Dokumentation stabiler und es wird vermieden, dass die 
   Dokumentation und die Oberfläche auseinander laufen. Wichtig ist, DASS die Oberfläche bestimmte Möglichkeiten bietet, nicht aber genau wie. So kann ein Akzeptanzkriterium lauten: Die Möglichkeit zum Ändern der Adresse steht nur Benutzern mit der Rolle Editor zur Verfügung. Es bleibt so beispielsweise dem Frontend überlassen, ob es den beispielsweise Button ausblendet, ausgraut oder vielleicht alle Input-Felder disabled.
+
+## Testen von Akzeptanzkriterien
+
+Die Akzeptanzkriterien werden in den Tests verknüpft. Dabei ist die einfachste Implementierung die ID des 
+AKs im Testnamen angegeben und den Testreport auszuwerten.
+
+In einem realen Projekt sollten AKs im Regelfall durch Integrationstests abgedeckt werden. Ein Unittest prüft zwar 
+die funktionale Korrektheit, aber ob der Code in der Anwendung wirklich genutzt/durchlaufen wird, kann er nicht 
+feststellen. Die Entscheidung, in welchen Fällen UT oder ITs zum Einsatz kommen, sollte aber im Projekt geklärt werden.
+
+Im Falle von ITs müssen alle Umsysteme gemockt sein, damit ich auch alte Versionen auschecken kann und immer die 
+identische Anforderungsabdeckung bekomme (Wiederholbarkeit).
+
+

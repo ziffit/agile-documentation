@@ -127,7 +127,8 @@ class FachfunktionenToAsciidoc {
             aksfeature.keySet().each { String ak ->
                 String key = ffId + "#" + ak
                 if (akReport.containsKey(key)) {
-                    if (akReport.get(key).findAll { it.value == "success" }.size() == akReport.get(key).size()) {
+                    if (akReport.get(key).findAll { it.value == "success" }.size() > 0 &&
+                            akReport.get(key).findAll { it.value == "failed"}.size() == 0) {
                         countSuccess++
                     }
                 }

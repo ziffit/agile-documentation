@@ -6,6 +6,7 @@ akzeptanzkriterien:
   - 01: "Es ist wunderschön"
   - 02: "Es sollte auch funktionieren."
   - 03: "Testbares AK, mit deutlich längerer Formulierung als die anderen Kriterien."
+  - 04: "AK mit nur einem ignoriertem Test."
 tags:
   - Aufgaben
   - Neuanlage
