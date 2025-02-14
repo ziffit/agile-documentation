@@ -37,7 +37,7 @@ toc::[]
 
 *Akzeptanzkriterien:*
 
-Coverage: <%=akCoverage.get(it.key)%> %
+*Coverage:* <%=akCoverage.get(it.key)%> % (mindestens 1 Test pro Kriterium, alle Testausführungen erfolgreich)
 
 <% aks.get(it.key).each { ak->
     def key = it.key+"#"+ak.key
@@ -45,7 +45,7 @@ Coverage: <%=akCoverage.get(it.key)%> %
 ====
 *<%= it.key %>#<%= ak.key %>*: _<%= ak.value %>_
 
-<% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  '${test.key}'# + \n")}} : println("[yellow]#keine Tests gefunden#") %>
+<% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  ${test.key}# + \n")}} : println("[yellow]#keine Tests gefunden#") %>
 ====
 <%
 }
@@ -54,6 +54,7 @@ Coverage: <%=akCoverage.get(it.key)%> %
 
 <% if(diagramme.containsKey(it.key)) { %>
 *Diagramm:*
+
 <%= diagramme.get(it.key) %>
 <% } %>
 ****

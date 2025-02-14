@@ -7,6 +7,7 @@ akzeptanzkriterien:
   - 02: "Es sollte auch funktionieren."
   - 03: "Testbares AK, mit deutlich längerer Formulierung als die anderen Kriterien."
   - 04: "AK mit nur einem ignoriertem Test."
+  - 05: "AK ohne Test."
 tags:
   - Aufgaben
-  - Neuanlage
+  - Beispieltag

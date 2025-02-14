@@ -1,16 +1,13 @@
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+Die Division zweier Ganzzahlen berechnet das ganzzahlige Ergebnis der Division des Dividenden durch den Divisor.
+Der Rückgabewert ist der Quotient ohne Nachkommastellen (Ganzzahldivision).
 
-gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-est Lorem ipsum dolor sit amet.
+Falls eine Gleitkomma-Division erforderlich ist, muss eine explizite Umwandlung in einen geeigneten Datentyp erfolgen.
 
-[grid="rows"]
-[options="header",cols="3s,2,6a"]
+*Beispiele*
+[options="header"]
 |====
-| Spalte-Fett | Spalte-Normal | Ascii-Doc
-
-| Super | Jap | *Hier* wird _asciidoc_ 'gerendered'
-| ganz | tolle | sache
+| Dividend  | Divisor   | Ergebnis
+| 9         | 3         | *3*
+| 12        | 6         | *2*
 |====
+

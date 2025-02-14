@@ -1,4 +1,4 @@
-package de.fx
+package de.fx.agiledocumentation
 
 import groovy.json.JsonOutput
 import groovy.text.SimpleTemplateEngine
@@ -143,9 +143,9 @@ class FachfunktionenToAsciidoc {
 
 
             //Diagramm
-            def diagramm = new File(fachfunktionenDir, ffId + "-dia.adoc")
-            if (diagramm.isFile()) {
-                diagramme.put(ffId, diagramm.getText("UTF-8"))
+            def diagrammfile = new File(fachfunktionenDir, ffId + "-dia.adoc")
+            if (diagrammfile.isFile()) {
+                diagramme.put(ffId, diagrammfile.getText("UTF-8"))
             }
 
         }

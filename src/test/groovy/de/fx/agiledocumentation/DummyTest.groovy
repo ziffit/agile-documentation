@@ -1,4 +1,4 @@
-package de.fx
+package de.fx.agiledocumentation
 
 import spock.lang.Specification
 

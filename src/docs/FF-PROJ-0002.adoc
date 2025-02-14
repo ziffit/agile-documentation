@@ -13,3 +13,12 @@ magna aliquyam erat, sed diam voluptua. At <<Bast,Bast>> eos et accusam et justo
 }
 ----
 
+*Diagramm im asciidoc*
+
+[plantuml,helloworld]
+....
+:Hello world;
+:This is on defined on
+several **lines**;
+....
+

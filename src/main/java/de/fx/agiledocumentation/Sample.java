@@ -1,8 +1,8 @@
-package de.fx;
+package de.fx.agiledocumentation;
 
 public class Sample {
 
-    int add(int a, int b) {
+    Integer add(int a, int b) {
         return a + b;
     }
 
@@ -10,6 +10,6 @@ public class Sample {
         if (b == 0) {
             throw new IllegalArgumentException("Division by zero is not allowed");
         }
-        return a / b;
+        return (double) a / b;
     }
 }
