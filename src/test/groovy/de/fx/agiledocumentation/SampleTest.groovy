@@ -35,7 +35,17 @@ class SampleTest extends Specification {
         -1 | -1 || -2
     }
 
+    def "Dividieren mit negativen Zahlen ist zulässig: #a und #b = #expected."() {
+    //def "Dividieren mit negativen Zahlen ist zulässig: #a und #b = #expected. [FF-PROJ-0001#03]"() {
+        expect:
+        systemUnderTest.divide(a, b) == expected
 
+        where:
+        a   | b  || expected
+        -10 | 2  || -5.0d
+        24  | -5 || -4.8d
+        -24 | -5 || 4.8d
+    }
 
 
     @Ignore

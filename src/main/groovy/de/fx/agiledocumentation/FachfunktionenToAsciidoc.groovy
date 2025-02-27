@@ -192,7 +192,7 @@ class FachfunktionenToAsciidoc {
     void loadAkReport(String directory) {
         def reportsDir = new File(directory)
         def reportFiles = reportsDir.listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
+            boolean accept(File dir, String name) {
                 return name.endsWith('.xml')
             }
         })
