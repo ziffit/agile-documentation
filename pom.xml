@@ -9,7 +9,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <version.groovy>4.0.16</version.groovy>
+        <version.groovy>4.0.25</version.groovy>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <docDirectory>${project.basedir}/src/docs</docDirectory>
         <asciidocOutputDirectory>${project.build.directory}/asciidoc-out</asciidocOutputDirectory>
         <testResultsOutputDirectory>${project.build.directory}/surefire-reports</testResultsOutputDirectory>
@@ -25,7 +27,7 @@
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-bom</artifactId>
-                <version>2.4-M4-groovy-4.0</version>
+                <version>2.4-M5-groovy-4.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
