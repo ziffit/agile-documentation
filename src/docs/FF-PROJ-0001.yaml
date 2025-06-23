@@ -1,11 +1,10 @@
 ---
 name: Division
-kurzbeschreibung: |
-  Dividieren von zwei Ganzzahlen
+kurzbeschreibung: Dividieren von zwei Ganzzahlen
 akzeptanzkriterien:
   - 01: "Die Division zweier Integer ergibt eine Gleitkommazahl."
   - 02: "Null als Divisor ist nicht zulässig."
-#  - 03: "Negative Zahlen sind als Dividend und Divisor zulässig."
 tags:
   - Division
-  - Beispieltag
+  - Ganzzahl
+  - Integer
