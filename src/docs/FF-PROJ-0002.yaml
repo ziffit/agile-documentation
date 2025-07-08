@@ -1,13 +1,11 @@
 ---
-name: JSON-Code in Asciidoc
-kurzbeschreibung: |
-  labore et dolore
+name: Benutzerregistrierung
+kurzbeschreibung: Registrierung eines neuen Benutzers über die Web-Oberfläche.
 akzeptanzkriterien:
-  - 01: "Es ist wunderschön"
-  - 02: "Es sollte auch funktionieren."
-  - 03: "Testbares AK, mit deutlich längerer Formulierung als die anderen Kriterien."
-  - 04: "AK mit nur einem ignoriertem Test."
-  - 05: "AK ohne Test."
+  - 01: "Der Benutzername entspricht dem Regex /^[a-zA-Z0-9]{5,20}$/."
+  - 03: "Passwort und Passwort-Wiederholung müssen übereinstimmen."
+  - 04: "Eine Registrierung mit bereits vergebenem Benutzernamen ist nicht möglich."
+  - 05: "Nach erfolgreicher Registrierung erhält der Benutzer eine Bestätigungsmail."
 tags:
-  - Aufgaben
-  - Beispieltag
+  - Benutzername
+  - Passwort

@@ -1,0 +1,15 @@
+==== Ablauf Login
+
+[plantuml,Login-Prozess]
+----
+actor Benutzer
+participant "Login-Seite" as UI
+participant "Auth-Service" as Auth
+participant "Benutzerdatenbank" as DB
+
+Benutzer -> UI : Gibt Benutzername und Passwort ein
+UI -> Auth : Übergibt Zugangsdaten
+Auth -> DB : Prüft Benutzername und Passwort
+DB --> Auth : Ergebnis (gültig/ungültig)
+Auth --> UI : Antwort mit Token oder Fehlermeldung
+----

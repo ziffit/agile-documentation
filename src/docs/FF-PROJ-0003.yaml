@@ -1,0 +1,8 @@
+---
+name: Passwort zurücksetzen
+kurzbeschreibung: Funktion zum Zurücksetzen des Passworts eines Benutzers.
+akzeptanzkriterien:
+  - 01: "Ein gültiger Token zum Zurücksetzen des Passworts ist erforderlich."
+  - 02: "Das neue Passwort muss den Sicherheitsanforderungen entsprechen (vgl. FF-BSPP-0002#02)."
+tags:
+  - Passwort

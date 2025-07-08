@@ -5,12 +5,12 @@
 
 :toc: macro
 :toc-title: Inhalt
-:toclevels: 3
+:toclevels: 2
 :numbered:
 
 = Dokumentation: <%=projectName%>
 
-<%= projectInfo%>
+<%=projectInfo%>
 
 toc::[]
 
@@ -29,35 +29,34 @@ toc::[]
 
 <% fachfunktionen.sort().each { %>
 [#<%=it.key%>]
+
 === <%=it.key%> <%=it.value.name%>
-****
+
 *Kurzbeschreibung:* <%=it.value.kurzbeschreibung%>
 
 <%= it.value.beschreibung %>
 
-*Akzeptanzkriterien:*
+==== Akzeptanzkriterien
 
 *Coverage:* <%=akCoverage.get(it.key)%> % (mindestens 1 Test pro Kriterium, alle Testausführungen erfolgreich)
 
 <% aks.get(it.key).each { ak->
     def key = it.key+"#"+ak.key
 %>
-====
+****
 *<%= it.key %>#<%= ak.key %>*: _<%= ak.value %>_
 
 <% akReport.get(key) != null ? akReport.get(key).each{ test -> { print("[${test.color}]#${test.icon}  ${test.key}# + \n")}} : println("[yellow]#keine Tests gefunden#") %>
-====
+****
 <%
 }
 %>
 
 
 <% if(diagramme.containsKey(it.key)) { %>
-*Diagramm:*
 
 <%= diagramme.get(it.key) %>
 <% } %>
-****
 
 <% } %>
 

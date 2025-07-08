@@ -1,10 +1,12 @@
 ---
-name: Division
-kurzbeschreibung: Dividieren von zwei Ganzzahlen
+name: Benutzer Login
+kurzbeschreibung: Authentifizierung von Benutzer:innen anhand von Zugangsdaten.
 akzeptanzkriterien:
-  - 01: "Die Division zweier Integer ergibt eine Gleitkommazahl."
-  - 02: "Null als Divisor ist nicht zulässig."
+  - 01: "Ein gültiger Benutzername und ein korrektes Passwort führen zur erfolgreichen Anmeldung."
+  - 02: "Ein ungültiger Benutzername oder ein falsches Passwort führen zu einer Fehlermeldung."
+  - 03: "Benutzer:innen ohne Aktivierung können sich nicht anmelden."
+  - 04: "Die Anmeldung erzeugt ein gültiges JWT-Token mit Ablaufzeit."
 tags:
-  - Division
-  - Ganzzahl
-  - Integer
+  - Benutzername
+  - Login
+  - Passwort

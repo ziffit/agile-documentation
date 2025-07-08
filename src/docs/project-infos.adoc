@@ -1,2 +1,6 @@
-Beispiel für eine agile Documentation.
-_Hier kann weiterer Text stehen_, der https://docs.asciidoctor.org/asciidoc/latest[ASCIIdoc] als MarkUp nutzt.
+*Diese Dokumentation dient ausschließlich Demonstrationszwecken.*
+
+Sie zeigt exemplarisch, wie Fachfunktionen beschrieben und mit Akzeptanzkriterien sowie automatisierten Tests verknüpft werden können.
+Die Inhalte basieren auf dem Beispielprojekt unter https://github.com/ziffit/agile-documentation[https://github.com/ziffit/agile-documentation]].
+
+In einem echten Projekt wären Fachfunktionen, Testabdeckung und Struktur entsprechend umfangreicher.

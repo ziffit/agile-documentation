@@ -1,0 +1,7 @@
+Die Division zweier Ganzzahlen berechnet das ganzzahlige Ergebnis der
+Division des Dividenden durch den Divisor.
+Der Rückgabewert ist der Quotient ohne Nachkommastellen
+(Ganzzahldivision).
+
+Falls eine Gleitkomma-Division erforderlich ist, muss eine explizite
+Umwandlung in einen geeigneten Datentyp erfolgen.

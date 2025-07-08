@@ -1,15 +1,16 @@
-Die Division zweier Ganzzahlen berechnet das ganzzahlige Ergebnis der
-Division des Dividenden durch den Divisor.
-Der Rückgabewert ist der Quotient ohne Nachkommastellen
-(Ganzzahldivision).
 
-Falls eine Gleitkomma-Division erforderlich ist, muss eine explizite
-Umwandlung in einen geeigneten Datentyp erfolgen.
+Der Login ist der Einstiegspunkt für alle geschützten Funktionen im System.
+Benutzer:innen geben ihre Zugangsdaten ein und erhalten bei erfolgreicher Anmeldung ein Authentifizierungs-Token.
 
-*Beispiele*
-[options="header"]
-|====
-| Dividend  | Divisor   | Ergebnis
-| 9         | 3         | *3*
-| 12        | 6         | *2*
-|====
+
+*Beispiel: Authentifizierungs-Token*
+[source,json]
+----
+{
+  "sub": "user123",
+  "iat": 1616161616,
+  "exp": 1616165216,
+  "sessionId": "abc123xyz",
+  "roles": ["user", "admin"]
+}
+----

@@ -1,24 +1,10 @@
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed <<Ast,Ast>> nonumy eirmod tempor invidunt ut labore et dolore
-magna aliquyam erat, sed diam voluptua. At <<Bast,Bast>> eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+Die Registrierung ermöglicht es neuen Benutzer:innen, ein eigenes Konto im System zu erstellen. Dafür sind ein gültiger Benutzername, ein Passwort sowie die Wiederholung des Passworts erforderlich.
 
-.Beispiel-Json
-[source,json]
-----
-{
-"key1": "value1",
-"list": [
-  "entry1",
-  "entry2
-]
-}
-----
+Alle Eingaben werden vor dem Absenden validiert. Dabei gelten folgende Regeln:
 
-*Diagramm im asciidoc*
+* Der Benutzername darf nur Buchstaben und Ziffern enthalten und muss zwischen 5 und 20 Zeichen lang sein.
+* Das Passwort muss mindestens 8 Zeichen lang sein.
+* Die Passwort-Wiederholung muss mit dem Passwort übereinstimmen.
+* Eine Registrierung ist nur möglich, wenn der gewählte Benutzername noch nicht vergeben ist.
 
-[plantuml,helloworld]
-....
-:Hello world;
-:This is on defined on
-several **lines**;
-....
-
+Bei erfolgreicher Registrierung erhält der/die Benutzer:in eine Bestätigungsmail.
